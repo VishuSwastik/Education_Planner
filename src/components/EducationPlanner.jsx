@@ -20,16 +20,16 @@ const EducationPlanner = () => {
   }, [subjects]);
 
   const addSubject = () => {
-  
+    if (subjectName && studyHours > 0) {
       setSubjects([...subjects, { name: subjectName, hours: studyHours }]);
       setSubjectName('');
       setStudyHours('');
-   
+    }
   };
 
   const adjustHours = (index, delta) => {
     const newSubjects = [...subjects];
-    newSubjects[index].hours = Math.max( newSubjects[index].hours + delta);
+    newSubjects[index].hours = Math.max(0, newSubjects[index].hours + delta);
     setSubjects(newSubjects);
   };
 
